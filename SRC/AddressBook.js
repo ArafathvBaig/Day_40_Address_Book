@@ -100,3 +100,72 @@ try {
 for(let i=0;i<addressBookArray.length;i++){
     console.log(addressBookArray[i]);
 }
+
+const prompt = require('prompt-sync')();
+
+let findContact=(firstname, lastname) => 
+{
+    let contactToEdit;
+    for (let i = 0; i < addressBookArray.length; i++) 
+    {
+        if (addressBookArray[i].firstName === firstname && addressBookArray[i].lastName === lastname)
+            contactToEdit = addressBookArray[i]
+    }
+
+    if (contactToEdit == null)
+        console.log("No Contact Found To Edit")
+    else {
+        console.log("0. Exit \n1. Edit First Name \n2. Edit Last Name \n3. Edit Address \n4. Edit City \n5. Edit State");
+        console.log("6. Edit ZipCode \n7. Edit Phone Number \n8. Edit Email")
+        let input = prompt("Enter Your Choice:  ")
+        input = parseInt(input)
+        while (input != 0) 
+        {
+            switch (input) 
+            {
+                case 1:
+                    let firstname = prompt("Enter the first Name: ");
+                    contactToEdit.firstName = firstname;
+                    break;
+                case 2:
+                    let lastname = prompt("Enter the last Name: ");
+                    contactToEdit.lastName = lastname;
+                    break;
+                case 3:
+                    let editedAddress = prompt("Enter the address: ");
+                    contactToEdit.address = editedAddress;
+                    break;
+                case 4:
+                    let editedCity = prompt("Enter the city: ");
+                    contactToEdit.city = editedCity;
+                    break;
+                case 5:
+                    let editedState = prompt("Enter the State: ");
+                    contactToEdit.state = editedState;
+                    break;
+                case 6:
+                    let editedZip = prompt("Enter the zip: ");
+                    contactToEdit.zip = editedZip;
+                    break;
+                case 7:
+                    let editedPhoneNumber = prompt("Enter the phone number: ");
+                    contactToEdit.phoneNumber = editedPhoneNumber;
+                    break;
+                case 8:
+                    let editedEmail = prompt("Enter the email: ");
+                    contactToEdit.email = editedEmail;
+                    break;
+                default:
+                    console.log("Wrong Input");
+            }
+        }
+        console.log("Program Exited!");
+    }
+}
+let param1 = prompt("Enter the First Name:  ");
+let param2 = prompt("Enter the Last Name:  ");
+findContact(param1, param2);
+for (let i = 0; i < addressBookArray.length; i++) 
+{
+    console.log(addressBookArray[i]);
+}
