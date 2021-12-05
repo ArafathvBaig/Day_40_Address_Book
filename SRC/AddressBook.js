@@ -167,23 +167,28 @@ let findContact=(firstname, lastname) =>
     }
 }
 
-let deleteContact =(firstname, lastname)=>
+let deleteContact = (firstname, lastname) =>
 {
-    let contactToDelete,indexOfContact;
     for (let i = 0; i < addressBookArray.length; i++) 
     {
         if (addressBookArray[i].firstName == firstname && addressBookArray[i].lastName == lastname)
         {
             contactToDelete = addressBookArray[i];
-            indexOfContact = i;
-            console.log(indexOfContact);
+            console.log("Deleting Contact:: "+contactToDelete);
             console.log("Delte running");
+            addressBookArray.splice(i,1);
+        }
+        else
+        {
+            console.log("Contact Not Found.");
         }
     }
-    if(indexOfContact!=-1)
-    {
-        addressBookArray.splice(indexOfContact,1);
-    }
+}
+
+let numberOfContact = () =>
+{
+    console.log("Number of contact is ")
+    console.log(addressBookArray.length);
 }
 
 // Edit Contact
@@ -203,3 +208,6 @@ for (let i = 0; i < addressBookArray.length; i++)
 {
     console.log(addressBookArray[i]);
 }
+
+// Count Number of Contacts
+numberOfContact();
