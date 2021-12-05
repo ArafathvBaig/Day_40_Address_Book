@@ -103,6 +103,7 @@ for(let i=0;i<addressBookArray.length;i++){
 
 const prompt = require('prompt-sync')();
 
+// Edit Contact Function
 let findContact=(firstname, lastname) => 
 {
     let contactToEdit;
@@ -167,6 +168,7 @@ let findContact=(firstname, lastname) =>
     }
 }
 
+// Delete Contact Function
 let deleteContact = (firstname, lastname) =>
 {
     for (let i = 0; i < addressBookArray.length; i++) 
@@ -185,12 +187,14 @@ let deleteContact = (firstname, lastname) =>
     }
 }
 
+// Count Function
 let numberOfContact = () =>
 {
     console.log("Number of contact is ")
     console.log(addressBookArray.length);
 }
 
+// Check Duplicate Contact Before Adding Function
 let addContact = (firstName, lastName, address, city, state, zip, phoneNumber, email) =>
 {
     if(addressBookArray.some(contacts=>contacts.firstName==firstName) && 
@@ -203,6 +207,20 @@ let addContact = (firstName, lastName, address, city, state, zip, phoneNumber, e
         addressBookArray.push(new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email));
         console.log("Contact Added!");
     }
+}
+
+// Search By City Function
+let searchByCity = (searchCity) =>
+{
+    let contact = addressBookArray.filter(contact => contact.city == searchCity);
+    console.log(contact);
+}
+
+// Search By State Functions
+let searchByState = (searchState) =>
+{
+    let contact = addressBookArray.filter(contact => contact.state == searchState);
+    console.log(contact);
 }
 
 // Edit Contact
@@ -235,3 +253,9 @@ for (let i = 0; i < addressBookArray.length; i++)
 {
     console.log(addressBookArray[i]);
 }
+
+// UC 8,9 Search By City or State and View
+console.log("Search By City!");
+searchByCity("Repalle");
+console.log("Search By State!");
+searchByState("Telangana");
