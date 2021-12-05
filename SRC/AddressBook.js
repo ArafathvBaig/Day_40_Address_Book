@@ -158,13 +158,47 @@ let findContact=(firstname, lastname) =>
                 default:
                     console.log("Wrong Input");
             }
+            console.log("0. Exit \n1. Edit First Name \n2. Edit Last Name \n3. Edit Address \n4. Edit City \n5. Edit State");
+            console.log("6. Edit ZipCode \n7. Edit Phone Number \n8. Edit Email")
+            input = prompt("Enter Your Choice:  ")
+            input = parseInt(input)
         }
         console.log("Program Exited!");
     }
 }
+
+let deleteContact =(firstname, lastname)=>
+{
+    let contactToDelete,indexOfContact;
+    for (let i = 0; i < addressBookArray.length; i++) 
+    {
+        if (addressBookArray[i].firstName == firstname && addressBookArray[i].lastName == lastname)
+        {
+            contactToDelete = addressBookArray[i];
+            indexOfContact = i;
+            console.log(indexOfContact);
+            console.log("Delte running");
+        }
+    }
+    if(indexOfContact!=-1)
+    {
+        addressBookArray.splice(indexOfContact,1);
+    }
+}
+
+// Edit Contact
 let param1 = prompt("Enter the First Name:  ");
 let param2 = prompt("Enter the Last Name:  ");
 findContact(param1, param2);
+for (let i = 0; i < addressBookArray.length; i++) 
+{
+    console.log(addressBookArray[i]);
+}
+
+// Delete Contact
+param1 = prompt("Enter the First Name:  ");
+param2 = prompt("Enter the Last Name:  ");
+deleteContact(param1, param2);
 for (let i = 0; i < addressBookArray.length; i++) 
 {
     console.log(addressBookArray[i]);
