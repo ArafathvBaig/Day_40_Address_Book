@@ -1,4 +1,4 @@
-class AddressBook
+class Contacts
 {
     // Constructor
     constructor(firstName, lastName, address, city, state, zip, phoneNumber, email)
@@ -82,6 +82,21 @@ class AddressBook
     }
 }
 
-let addressBook = new AddressBook("Arafath", "Baig", "Kopurivari Palem", "Repalle", "Andhra Pradesh", 
-                                    "522 262", "+91 7986331895", "arafathbaig1997@gmail.com.in");
-console.log(addressBook.toString());
+var addressBookArray = new Array();
+try {
+    let contact1 = new Contacts("Arafath", "Baig", "Kopurivari Palem", "Repalle", "Andhra Pradesh", 
+                                "522 262", "+91 7986331895", "arafathbaig1997@gmail.com.in");
+    let contact2 = new Contacts("Karimulla", "Baig", "Kopurivari Palem", "Repalle", "Andhra Pradesh", 
+                                "522 262", "9492083682", "arafathbhai1997@gmail.com");
+    console.log(contact1.toString());
+    console.log(contact2.toString());
+    addressBookArray.push(contact1);
+    addressBookArray.push(contact2);
+
+} catch(e) {
+    console.error(e);
+}
+
+for(let i=0;i<addressBookArray.length;i++){
+    console.log(addressBookArray[i]);
+}
