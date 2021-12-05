@@ -191,6 +191,20 @@ let numberOfContact = () =>
     console.log(addressBookArray.length);
 }
 
+let addContact = (firstName, lastName, address, city, state, zip, phoneNumber, email) =>
+{
+    if(addressBookArray.some(contacts=>contacts.firstName==firstName) && 
+        addressBookArray.some(contacts=>contacts.lastName==lastName))
+    {
+        console.log("Contact already exists");
+    }
+    else
+    {
+        addressBookArray.push(new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email));
+        console.log("Contact Added!");
+    }
+}
+
 // Edit Contact
 let param1 = prompt("Enter the First Name:  ");
 let param2 = prompt("Enter the Last Name:  ");
@@ -211,3 +225,13 @@ for (let i = 0; i < addressBookArray.length; i++)
 
 // Count Number of Contacts
 numberOfContact();
+
+// Duplicate Contact
+addContact("Karimulla", "Baig", "Kopurivari Palem", "Repalle", "Andhra Pradesh", 
+            "522 262", "9492083682", "arafathbhai1997@gmail.com");
+addContact("Rehana", "Begum", "Kopurivari Palem", "Repalle", "Andhra Pradesh", 
+            "522 262", "9492083681", "arafathbaig420@gmail.com");
+for (let i = 0; i < addressBookArray.length; i++)
+{
+    console.log(addressBookArray[i]);
+}
