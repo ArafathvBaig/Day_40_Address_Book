@@ -223,6 +223,20 @@ let searchByState = (searchState) =>
     console.log(contact);
 }
 
+// Count By City Function
+getCountOfContactsByCity = (city) =>
+{
+    let count= addressBookArray.filter((contact) => contact.city == city).length;
+    console.log(count);
+}
+
+// Count By State Function
+getCountOfContactsByState = (state) => 
+{
+    let count= addressBookArray.filter((contact) => contact.state == state).length;
+    console.log(count);
+}
+
 // Edit Contact
 let param1 = prompt("Enter the First Name:  ");
 let param2 = prompt("Enter the Last Name:  ");
@@ -259,3 +273,9 @@ console.log("Search By City!");
 searchByCity("Repalle");
 console.log("Search By State!");
 searchByState("Telangana");
+
+// UC 10 - Count By City and By State
+console.log("Count By City!");
+getCountOfContactsByCity("Repalle");
+console.log("Count By State!");
+getCountOfContactsByState("Telangana");
