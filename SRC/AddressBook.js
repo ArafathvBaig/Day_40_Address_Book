@@ -88,17 +88,22 @@ try {
                                 "522 262", "+91 7986331895", "arafathbaig1997@gmail.com.in");
     let contact2 = new Contacts("Karimulla", "Baig", "Kopurivari Palem", "Repalle", "Andhra Pradesh", 
                                 "522 262", "9492083682", "arafathbhai1997@gmail.com");
+    console.log(" ");
     console.log(contact1.toString());
+    console.log(" ");
     console.log(contact2.toString());
     addressBookArray.push(contact1);
     addressBookArray.push(contact2);
 
 } catch(e) {
+    console.log(" ");
     console.error(e);
 }
 
+console.log(" ");
 for(let i=0;i<addressBookArray.length;i++){
     console.log(addressBookArray[i]);
+    console.log(" ");
 }
 
 const prompt = require('prompt-sync')();
@@ -114,11 +119,11 @@ let findContact=(firstname, lastname) =>
     }
 
     if (contactToEdit == null)
-        console.log("No Contact Found To Edit")
+        console.log("No Contact Found To Edit\n")
     else {
-        console.log("0. Exit \n1. Edit First Name \n2. Edit Last Name \n3. Edit Address \n4. Edit City \n5. Edit State");
+        console.log("\n0. Exit \n1. Edit First Name \n2. Edit Last Name \n3. Edit Address \n4. Edit City \n5. Edit State");
         console.log("6. Edit ZipCode \n7. Edit Phone Number \n8. Edit Email")
-        let input = prompt("Enter Your Choice:  ")
+        let input = prompt("\nEnter Your Choice:  ")
         input = parseInt(input)
         while (input != 0) 
         {
@@ -161,10 +166,10 @@ let findContact=(firstname, lastname) =>
             }
             console.log("0. Exit \n1. Edit First Name \n2. Edit Last Name \n3. Edit Address \n4. Edit City \n5. Edit State");
             console.log("6. Edit ZipCode \n7. Edit Phone Number \n8. Edit Email")
-            input = prompt("Enter Your Choice:  ")
+            input = prompt("\nEnter Your Choice:  ")
             input = parseInt(input)
         }
-        console.log("Program Exited!");
+        console.log("\nProgram Exited!");
     }
 }
 
@@ -176,8 +181,8 @@ let deleteContact = (firstname, lastname) =>
         if (addressBookArray[i].firstName == firstname && addressBookArray[i].lastName == lastname)
         {
             contactToDelete = addressBookArray[i];
-            console.log("Deleting Contact:: "+contactToDelete);
-            console.log("Delte running");
+            console.log("\nDeleting Contact:: "+contactToDelete);
+            console.log("\nDelte running");
             addressBookArray.splice(i,1);
         }
         else
@@ -200,12 +205,12 @@ let addContact = (firstName, lastName, address, city, state, zip, phoneNumber, e
     if(addressBookArray.some(contacts=>contacts.firstName==firstName) && 
         addressBookArray.some(contacts=>contacts.lastName==lastName))
     {
-        console.log("Contact already exists");
+        console.log("\nContact already exists");
     }
     else
     {
         addressBookArray.push(new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email));
-        console.log("Contact Added!");
+        console.log("\nContact Added!");
     }
 }
 
@@ -237,25 +242,62 @@ getCountOfContactsByState = (state) =>
     console.log(count);
 }
 
+// Sort By Name Function
+let sortByName = () => 
+{
+    addressBookArray.sort((first, second) => (first.firstName).localeCompare(second.firstName));
+    console.log(" ");
+    console.log(addressBookArray.toString()+"\n");
+}
+
+// Sort By City Function
+let sortByCity = () =>
+{
+    addressBookArray.sort((first, second) => (first.city).localeCompare(second.city));
+    console.log(" ");
+    console.log(addressBookArray.toString()+"\n");
+}
+
+// Sort By State Function
+let sortByState = () =>
+{
+    addressBookArray.sort((first, second) => (first.state).localeCompare(second.state));
+    console.log(" ");
+    console.log(addressBookArray.toString()+"\n");
+}
+
+// Sort By Zip Function
+let sortByZip = () =>
+{
+    addressBookArray.sort((first, second) => (first.zip).localeCompare(second.zip));
+    console.log(" ");
+    console.log(addressBookArray.toString()+"\n");
+}
+
 // Edit Contact
 let param1 = prompt("Enter the First Name:  ");
 let param2 = prompt("Enter the Last Name:  ");
 findContact(param1, param2);
+console.log(" ");
 for (let i = 0; i < addressBookArray.length; i++) 
 {
     console.log(addressBookArray[i]);
+    console.log(" ");
 }
 
 // Delete Contact
 param1 = prompt("Enter the First Name:  ");
 param2 = prompt("Enter the Last Name:  ");
 deleteContact(param1, param2);
+console.log(" ");
 for (let i = 0; i < addressBookArray.length; i++) 
 {
     console.log(addressBookArray[i]);
+    console.log(" ");
 }
 
 // Count Number of Contacts
+console.log("\nContacts Count!");
 numberOfContact();
 
 // Duplicate Contact
@@ -263,19 +305,32 @@ addContact("Karimulla", "Baig", "Kopurivari Palem", "Repalle", "Andhra Pradesh",
             "522 262", "9492083682", "arafathbhai1997@gmail.com");
 addContact("Rehana", "Begum", "Kopurivari Palem", "Repalle", "Andhra Pradesh", 
             "522 262", "9492083681", "arafathbaig420@gmail.com");
+console.log(" ");
 for (let i = 0; i < addressBookArray.length; i++)
 {
     console.log(addressBookArray[i]);
+    console.log(" ");
 }
 
 // UC 8,9 Search By City or State and View
-console.log("Search By City!");
+console.log("\nSearch By City!");
 searchByCity("Repalle");
-console.log("Search By State!");
+console.log("\nSearch By State!");
 searchByState("Telangana");
 
 // UC 10 - Count By City and By State
-console.log("Count By City!");
+console.log("\nCount By City!");
 getCountOfContactsByCity("Repalle");
-console.log("Count By State!");
+console.log("\nCount By State!");
 getCountOfContactsByState("Telangana");
+
+// UC 11,12 - Sort Contacts By FirstName, City, State, Zip
+console.log("\nSort By First Name!");
+sortByName();
+console.log("\nSort By City!");
+sortByCity();
+console.log("\nSort By State!");
+sortByState();
+console.log("\nSort By Zip!");
+sortByZip();
+
